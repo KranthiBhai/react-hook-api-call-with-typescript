@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./styles.css";
+import useTest from "./hook";
 
-function App() {
+export default function App() {
+  const [getUser, user, errorMessage] = useTest();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Simple API Hook Demo</h1>
+      <button onClick={() => getUser("123")}>Get User</button>
+      <div>
+        <h5>{user.name}</h5>
+        <h6>{user.email}</h6>
+        <h6>{user.age}</h6>
+
+        <h6 style={{ color: "red" }}>{errorMessage}</h6>
+      </div>
     </div>
   );
 }
-
-export default App;
